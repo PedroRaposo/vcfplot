@@ -1,12 +1,12 @@
 
-vcf_histogram = function(vcf, ...){
+vcf_histogram <- function(vcf, ...) {
   require(VariantAnnotation)
   require(dplyr)
   require(ggplot2)
 
-  info = as_tibble(info(exVCF))
+  info <- as_tibble(info(exVCF))
 
-  plot = info %>%
+  plot <- info %>%
     group_by(DP) %>%
     summarise(n = n()) %>%
     ggplot(aes(x = DP, y = n, fill = DP)) +
@@ -15,4 +15,3 @@ vcf_histogram = function(vcf, ...){
 
   return(plot)
 }
-
